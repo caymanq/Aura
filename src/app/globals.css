@@ -1,0 +1,148 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: #f8f4ed;
+  --foreground: #1d2b27;
+  --card: rgba(255, 255, 255, 0.76);
+  --card-foreground: #1d2b27;
+  --popover: #fffaf4;
+  --popover-foreground: #1d2b27;
+  --primary: #97cbb6;
+  --primary-foreground: #173029;
+  --secondary: #e8f1eb;
+  --secondary-foreground: #22342f;
+  --muted: #f1ece2;
+  --muted-foreground: #61716c;
+  --accent: #dcece1;
+  --accent-foreground: #20332d;
+  --destructive: #c75b43;
+  --border: rgba(36, 65, 56, 0.12);
+  --input: rgba(36, 65, 56, 0.14);
+  --ring: rgba(151, 203, 182, 0.55);
+  --chart-1: #97cbb6;
+  --chart-2: #c4dfcf;
+  --chart-3: #f4dcbc;
+  --chart-4: #d1c6b2;
+  --chart-5: #93a78f;
+  --sidebar: #fffaf4;
+  --sidebar-foreground: #1d2b27;
+  --sidebar-primary: #97cbb6;
+  --sidebar-primary-foreground: #173029;
+  --sidebar-accent: #eff6f1;
+  --sidebar-accent-foreground: #20332d;
+  --sidebar-border: rgba(36, 65, 56, 0.12);
+  --sidebar-ring: rgba(151, 203, 182, 0.55);
+  --font-sans: "Avenir Next", "Segoe UI", sans-serif;
+  --font-mono: "SFMono-Regular", "Cascadia Code", "Consolas", monospace;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-image:
+      radial-gradient(circle at top left, rgba(151, 203, 182, 0.22), transparent 34%),
+      radial-gradient(circle at top right, rgba(255, 255, 255, 0.6), transparent 28%),
+      linear-gradient(180deg, #faf7f1 0%, #f4efe5 100%);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia,
+      serif;
+    letter-spacing: -0.03em;
+  }
+
+  a,
+  button {
+    @apply transition-all duration-200;
+  }
+}
+
+@layer utilities {
+  .site-shell {
+    @apply mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10;
+  }
+
+  .glass-panel {
+    @apply rounded-[2rem] border border-white/50 bg-white/70 shadow-[0_24px_60px_rgba(28,52,45,0.08)] backdrop-blur;
+  }
+
+  .mint-ring {
+    box-shadow:
+      0 0 0 1px rgba(151, 203, 182, 0.36),
+      0 20px 45px rgba(67, 102, 90, 0.1);
+  }
+
+  .section-kicker {
+    @apply text-xs font-semibold uppercase tracking-[0.32em] text-[#4a6b61];
+  }
+
+  .soft-grid {
+    background-image:
+      linear-gradient(rgba(35, 55, 48, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(35, 55, 48, 0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+}
