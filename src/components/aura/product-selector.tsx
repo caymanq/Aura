@@ -2,11 +2,43 @@
 
 import Image from "next/image";
 import { Check, FlaskConical, ShieldCheck, Sparkles } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { productOptions } from "@/lib/aura-content";
 import { cn } from "@/lib/utils";
 
 type ProductOption = (typeof productOptions)[number];
+const SHOPIFY_SCRIPT_URL =
+  "https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js";
+const SHOPIFY_PRODUCT_IDS: Record<ProductOption["id"], string> = {
+  box: "8579750953039",
+  bag: "8579749118031",
+};
+
+declare global {
+  interface Window {
+    ShopifyBuy?: {
+      buildClient: (config: {
+        domain: string;
+        storefrontAccessToken: string;
+      }) => unknown;
+      UI?: {
+        onReady: (
+          client: unknown
+        ) => Promise<{
+          createComponent: (
+            type: "product",
+            config: {
+              id: string;
+              node: HTMLElement;
+              moneyFormat: string;
+              options: Record<string, unknown>;
+            }
+          ) => void;
+        }>;
+      };
+    };
+  }
+}
 
 export function ProductSelector() {
   const [selected, setSelected] = useState<ProductOption>(productOptions[0]);
@@ -94,12 +126,10 @@ export function ProductSelector() {
             <FeatureChip icon={ShieldCheck} label="Tested ingredient profile" />
           </div>
 
-          <button
-            type="button"
-            className="mt-8 inline-flex rounded-full bg-[#9fd0ba] px-6 py-3 text-sm font-semibold text-[#173029] hover:bg-[#8bc4aa]"
-          >
-            Choose this option
-          </button>
+          <ShopifyBuyButton
+            key={selected.id}
+            productId={SHOPIFY_PRODUCT_IDS[selected.id]}
+          />
         </div>
       </div>
 
@@ -138,4 +168,150 @@ function FeatureChip({
       {label}
     </div>
   );
+}
+
+function ShopifyBuyButton({ productId }: { productId: string }) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const initializeShopifyButton = () => {
+      const node = containerRef.current;
+      const shopify = window.ShopifyBuy;
+
+      if (cancelled || !node || !shopify?.UI) {
+        return;
+      }
+
+      node.innerHTML = "";
+
+      const client = shopify.buildClient({
+        domain: "korrclotrhing.myshopify.com",
+        storefrontAccessToken: "0d39da2199d83e220381286400a07681",
+      });
+
+      shopify.UI.onReady(client).then((ui) => {
+        if (cancelled || !containerRef.current) {
+          return;
+        }
+
+        ui.createComponent("product", {
+          id: productId,
+          node: containerRef.current,
+          moneyFormat: "%24%7B%7Bamount%7D%7D",
+          options: {
+            product: {
+              contents: {
+                img: false,
+                title: false,
+                price: false,
+                options: false,
+              },
+              styles: {
+                product: {
+                  width: "100%",
+                  "max-width": "100%",
+                  margin: "0",
+                },
+                button: {
+                  "background-color": "#9fd0ba",
+                  color: "#173029",
+                  "font-size": "14px",
+                  "font-weight": "600",
+                  "padding-left": "24px",
+                  "padding-right": "24px",
+                  "padding-top": "14px",
+                  "padding-bottom": "14px",
+                  "border-radius": "9999px",
+                  ":hover": {
+                    "background-color": "#8bc4aa",
+                  },
+                  ":focus": {
+                    "background-color": "#8bc4aa",
+                  },
+                },
+              },
+              text: {
+                button: "Add to cart",
+              },
+            },
+            modalProduct: {
+              contents: {
+                img: false,
+                imgWithCarousel: true,
+                button: false,
+                buttonWithQuantity: true,
+              },
+              styles: {
+                product: {
+                  width: "100%",
+                  "max-width": "100%",
+                  margin: "0",
+                },
+              },
+              text: {
+                button: "Add to cart",
+              },
+            },
+            cart: {
+              text: {
+                total: "Subtotal",
+                button: "Checkout",
+              },
+            },
+            productSet: {
+              styles: {
+                products: {
+                  margin: "0",
+                },
+              },
+            },
+            option: {},
+            toggle: {},
+          },
+        });
+      });
+    };
+
+    if (window.ShopifyBuy?.UI) {
+      initializeShopifyButton();
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    const existingScript = document.querySelector(
+      `script[src="${SHOPIFY_SCRIPT_URL}"]`
+    ) as HTMLScriptElement | null;
+
+    const handleLoad = () => {
+      initializeShopifyButton();
+    };
+
+    if (existingScript) {
+      existingScript.addEventListener("load", handleLoad);
+      if (window.ShopifyBuy?.UI) {
+        initializeShopifyButton();
+      }
+
+      return () => {
+        cancelled = true;
+        existingScript.removeEventListener("load", handleLoad);
+      };
+    }
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = SHOPIFY_SCRIPT_URL;
+    script.addEventListener("load", handleLoad);
+    document.head.appendChild(script);
+
+    return () => {
+      cancelled = true;
+      script.removeEventListener("load", handleLoad);
+    };
+  }, []);
+
+  return <div ref={containerRef} className="mt-8" />;
 }
