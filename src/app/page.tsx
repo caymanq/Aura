@@ -104,10 +104,10 @@ export default function Home() {
           </div>
           <div className="relative min-h-[320px] overflow-hidden rounded-[2rem]">
             <Image
-              src="/aura/bag-back.jpg"
-              alt="Aura fresh+ product science panel"
+              src="/aura/home-science-box.png"
+              alt="Aura fresh+ Cucumber Mint oral wellness hydration mix box"
               fill
-              className="object-cover"
+              className="object-contain scale-[1.08] rounded-[1.5rem] p-1 sm:p-2"
               sizes="(max-width: 1024px) 100vw, 40vw"
             />
           </div>

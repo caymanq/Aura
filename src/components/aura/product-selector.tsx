@@ -13,37 +13,37 @@ export function ProductSelector() {
   const gallery =
     selected.id === "bag"
       ? [
-          {
-            src: "/aura/bag-front-glossy.jpg",
-            alt: "Aura fresh+ bag front",
-          },
-          {
-            src: "/aura/bag-cucumber-mint.jpg",
-            alt: "Aura fresh+ bag with cucumber and mint",
-          },
-          {
-            src: "/aura/bag-back.jpg",
-            alt: "Aura fresh+ bag back",
-          },
-        ]
+        {
+          src: "/aura/bag-front-glossy.jpg",
+          alt: "Aura fresh+ bag front",
+        },
+        {
+          src: "/aura/bag-cucumber-mint.jpg",
+          alt: "Aura fresh+ bag with cucumber and mint",
+        },
+        {
+          src: "/aura/bag-back.jpg",
+          alt: "Aura fresh+ bag back",
+        },
+      ]
       : [
-          {
-            src: "/aura/box-front.jpg",
-            alt: "Aura fresh+ box front",
-          },
-          {
-            src: "/aura/box-angle.jpg",
-            alt: "Aura fresh+ box angle view",
-          },
-          {
-            src: "/aura/stick-pack.jpg",
-            alt: "Aura fresh+ single stick",
-          },
-        ];
+        {
+          src: "/aura/box-front.jpg",
+          alt: "Aura fresh+ box front",
+        },
+        {
+          src: "/aura/box-angle.jpg",
+          alt: "Aura fresh+ box angle view",
+        },
+        {
+          src: "/aura/stick-pack.jpg",
+          alt: "Aura fresh+ single stick",
+        },
+      ];
 
   return (
     <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-      <div className="glass-panel p-6 sm:p-8">
+      <div className="glass-panel order-2 p-6 sm:p-8 lg:order-1">
         <div className="mb-6 flex flex-wrap gap-3">
           {productOptions.map((option) => {
             const active = option.id === selected.id;
@@ -103,7 +103,7 @@ export function ProductSelector() {
         </div>
       </div>
 
-      <div className="glass-panel p-5">
+      <div className="glass-panel order-1 p-5 lg:order-2">
         <div className="relative min-h-[470px] overflow-hidden rounded-[2.2rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.96),rgba(239,246,241,0.92),rgba(230,239,233,0.95))]">
           <div className="absolute inset-0 soft-grid opacity-25" />
           <div className="relative h-full p-3">
