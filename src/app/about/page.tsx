@@ -13,36 +13,33 @@ export default function AboutPage() {
                 A ritual created for confidence, presence, and real relief.
               </h1>
               <p>
-                For years, I struggled with persistent bad breath and buildup, no
-                matter how much I brushed, flossed, or scraped my tongue. I tried
-                everything: mouthwash, gum, and multiple brushings a day.
-              </p>
-              <p>They worked in the moment, but never for long.</p>
-              <p>
-                What bothered me most was not just my mouth. It was the mental
-                distraction. The quiet anxiety during dates, meetings, and
-                everyday conversations. I was never fully present.
+                Persistent bad breath and buildup do not come from a lack of
+                effort. Brushing, flossing, mouthwash, and gum help in the
+                moment, but they do not always solve the root of the problem.
               </p>
               <p>
-                I did not want another temporary fix. I wanted something that
-                worked from the inside out.
+                The result is not just physical. It becomes a constant
+                distraction, creating quiet anxiety during conversations,
+                meetings, and everyday interactions. It pulls you out of the
+                moment and chips away at confidence.
               </p>
               <p>
-                Working alongside dental professionals, I created Aura fresh+, a
-                hydration mix designed to support oral balance and long-term
-                freshness through daily use.
+                Aura Fresh+ was created to go beyond temporary fixes. Developed
+                alongside dental professionals, this daily hydration mix is
+                designed to support oral balance from within and promote long
+                term freshness with a more consistent sense of confidence.
               </p>
               <p>
-                This is not a quick fix. It is a daily mix that helps you feel
-                confident, focused, and fully present.
+                This is not a quick fix. It is a daily ritual to help you feel
+                clear, focused, and fully present.
               </p>
             </div>
 
             <div className="grid gap-4">
-              <div className="relative aspect-[5/7] overflow-hidden rounded-[2.2rem] border border-white/60 bg-white/60">
+              <div className="relative aspect-square overflow-hidden rounded-[2.2rem] border border-white/60 bg-white/60">
                 <Image
-                  src="https://cdn.shopify.com/s/files/1/0679/1413/7679/files/WhatsApp_Image_2026-02-06_at_19.20.58.jpg?v=1770434988"
-                  alt="Aura lifestyle image"
+                  src="/aura/about-product-story.png"
+                  alt="Aura fresh+ box and stick packs on a marble counter"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 40vw"
