@@ -10,8 +10,8 @@ type ProductOption = (typeof productOptions)[number];
 const SHOPIFY_SCRIPT_URL =
   "https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js";
 const SHOPIFY_PRODUCT_IDS: Record<ProductOption["id"], string> = {
-  box: "8579750953039",
-  bag: "8579749118031",
+  box: "8579749118031",
+  bag: "8579750953039",
 };
 
 declare global {
