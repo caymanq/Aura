@@ -110,25 +110,22 @@ export default function SciencePage() {
           </div>
 
           <div className="flex snap-x gap-4 overflow-x-auto pb-5 [scrollbar-color:#9aa8a1_transparent] [scrollbar-width:thin]">
-            {ingredients.map((ingredient, index) => (
+            {ingredients.map((ingredient) => (
               <article
                 key={ingredient.name}
                 className="min-w-[250px] max-w-[250px] snap-start rounded-[1.8rem] border border-white/70 bg-white/86 p-4 shadow-[0_18px_45px_rgba(28,52,45,0.08)] sm:min-w-[280px] sm:max-w-[280px]"
               >
-                <div
-                  className={`relative mb-5 overflow-hidden rounded-[1.5rem] p-5 ${
-                    index % 4 === 0
-                      ? "bg-[linear-gradient(135deg,#e7f2ec_0%,#d5e8dd_50%,#cae1d4_100%)]"
-                      : index % 4 === 1
-                        ? "bg-[linear-gradient(135deg,#f7eedb_0%,#f2dfb2_52%,#ead6a2_100%)]"
-                        : index % 4 === 2
-                          ? "bg-[linear-gradient(135deg,#e5edf2_0%,#d5e0e5_52%,#ccd9dd_100%)]"
-                          : "bg-[linear-gradient(135deg,#e6f2ea_0%,#d8ebe2_50%,#cbe4d6_100%)]"
-                  }`}
-                >
-                  <div className="absolute inset-0 opacity-35 [background:radial-gradient(circle_at_20%_80%,rgba(255,255,255,0.9),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.7),transparent_26%)]" />
-                  <div className="relative flex h-36 items-end justify-end rounded-[1.1rem]">
-                    <span className="rounded-full bg-white/92 px-5 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#4f6c63]">
+                <div className="relative mb-5 h-40 overflow-hidden rounded-[1.5rem] bg-[#eef4f0]">
+                  <Image
+                    src={ingredient.image}
+                    alt={ingredient.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 250px, 280px"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
+                  <div className="absolute bottom-3 right-3">
+                    <span className="rounded-full bg-white/92 px-5 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#4f6c63] shadow-sm">
                       fresh+
                     </span>
                   </div>

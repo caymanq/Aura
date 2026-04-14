@@ -113,42 +113,49 @@ export const ingredients = [
   {
     name: "Zinc Gluconate",
     title: "The odor neutralizer",
+    image: "/aura/ingredients/ingredient-zinc-gluconate.png",
     description:
       "Helps eliminate sulfur compounds that cause lingering odor, so freshness starts at the source.",
   },
   {
     name: "Xylitol",
     title: "The bacteria fighter",
+    image: "/aura/ingredients/ingredient-xylitol.png",
     description:
       "Supports a healthier oral environment by helping reduce harmful bacteria linked to bad breath and buildup.",
   },
   {
     name: "Probiotic Blend",
     title: "The microbiome balancer",
+    image: "/aura/ingredients/ingredient-probiotic.png",
     description:
       "L. reuteri and L. salivarius help support a more balanced oral microbiome over time.",
   },
   {
     name: "Vitamin C",
     title: "The gum guardian",
+    image: "/aura/ingredients/ingredient-vitamin-c.png",
     description:
       "Supports gum health and everyday tissue maintenance so your mouth feels healthier and more resilient.",
   },
   {
     name: "Calcium & Phosphorus",
     title: "The enamel defenders",
+    image: "/aura/ingredients/ingredient-calcium-phosphorus.png",
     description:
       "Help support mineral balance and maintain strong enamel as part of your daily oral care routine.",
   },
   {
     name: "Natural Mint Extract",
     title: "The freshness booster",
+    image: "/aura/ingredients/ingredient-mint.png",
     description:
       "Delivers the clean, bright mint finish that makes each sip feel instantly refreshing.",
   },
   {
     name: "Electrolyte Blend",
     title: "The hydration helper",
+    image: "/aura/ingredients/ingredient-electrolytes.png",
     description:
       "Supports hydration and saliva flow, both of which play an important role in oral comfort and freshness.",
   },
