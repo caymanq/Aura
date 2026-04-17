@@ -233,7 +233,7 @@ function ShopifyBuyButton({ productId }: { productId: string }) {
                 },
               },
               text: {
-                button: "Add to cart",
+                button: "pre-order now",
               },
             },
             modalProduct: {
@@ -251,7 +251,7 @@ function ShopifyBuyButton({ productId }: { productId: string }) {
                 },
               },
               text: {
-                button: "Add to cart",
+                button: "pre-order now",
               },
             },
             cart: {
